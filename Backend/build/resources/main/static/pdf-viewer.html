@@ -8,437 +8,11 @@
 		<link rel="stylesheet" href="css/fontawesome-all.min.css" />
 		<link rel="stylesheet" href="css/responsive.css" />
 		<link rel="stylesheet" href="css/sidebar-fixed.css" />
-		<link rel="stylesheet" href="css/menu-toggle.css" />		<link rel="stylesheet" href="css/dark-mode.css" />
+		<link rel="stylesheet" href="css/menu-toggle.css" />
+		<link rel="stylesheet" href="css/header-unified-v2.css" />		<link rel="stylesheet" href="css/dark-mode.css" />
+		<link rel="stylesheet" href="/static/css/header-override.css">
 		<link rel="stylesheet" href="css/main-responsive.css" />		<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 		<style>
-			/* Menu Toggle Button Styling */
-			
-                  
-                  .menu-toggle-btn {
-                        position: fixed !important;
-                        top: 20px !important;
-                        left: calc(26em - 20px) !important; /* 사이드바 오른쪽에 위치 */
-                        background: #f56a6a;
-                        border-radius: 50%;
-                        box-shadow: 0 2px 10px rgba(245, 106, 106, 0.3);
-                        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                        width: 40px !important;
-                        height: 40px !important;
-                        display: flex !important;
-                        align-items: center !important;
-                        justify-content: center !important;
-                        cursor: pointer;
-                        z-index: 10001;
-                        visibility: visible !important;
-                        opacity: 1 !important;
-                        border: none;
-                        color: white;
-                        font-size: 1.2rem;
-                        padding: 0;
-                        transform: translateX(-50%);
-                  }
-                  
-                  /* 사이드바가 닫혔을 때 버튼 위치 */
-                  body.sidebar-inactive .menu-toggle-btn {
-                        left: 20px !important;
-                        transform: translateX(0);
-                  }
-                  
-                  /* 사이드바 크기에 따른 버튼 위치 조정 */
-                  @media screen and (max-width: 1680px) {
-                        .menu-toggle-btn {
-                                left: calc(24em - 20px) !important;
-                        }
-                  }
-                  
-                  @media screen and (max-width: 1280px) {
-                        .menu-toggle-btn {
-                                left: 20px !important;
-                                transform: translateX(0);
-                        }
-                  }
-                  
-                  /* 사이드바가 닫혔을 때 버튼 위치 */
-                  body.sidebar-inactive 
-                  .menu-toggle-btn {
-                        position: fixed !important;
-                        top: 20px !important;
-                        left: calc(26em - 20px) !important; /* 사이드바 오른쪽에 위치 */
-                        background: #f56a6a;
-                        border-radius: 50%;
-                        box-shadow: 0 2px 10px rgba(245, 106, 106, 0.3);
-                        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                        width: 40px !important;
-                        height: 40px !important;
-                        display: flex !important;
-                        align-items: center !important;
-                        justify-content: center !important;
-                        cursor: pointer;
-                        z-index: 10001;
-                        visibility: visible !important;
-                        opacity: 1 !important;
-                        border: none;
-                        color: white;
-                        font-size: 1.2rem;
-                        padding: 0;
-                        transform: translateX(-50%);
-                  }
-                  
-                  /* 사이드바가 닫혔을 때 버튼 위치 */
-                  body.sidebar-inactive .menu-toggle-btn {
-                        left: 20px !important;
-                        transform: translateX(0);
-                  }
-                  
-                  /* 사이드바 크기에 따른 버튼 위치 조정 */
-                  @media screen and (max-width: 1680px) {
-                        .menu-toggle-btn {
-                                left: calc(24em - 20px) !important;
-                        }
-                  }
-                  
-                  @media screen and (max-width: 1280px) {
-                        .menu-toggle-btn {
-                                left: 20px !important;
-                                transform: translateX(0);
-                        }
-                  }
-                  
-                  /* 사이드바 크기에 따른 버튼 위치 조정 */
-                  @media screen and (max-width: 1680px) {
-                        
-                  .menu-toggle-btn {
-                        position: fixed !important;
-                        top: 20px !important;
-                        left: calc(26em - 20px) !important; /* 사이드바 오른쪽에 위치 */
-                        background: #f56a6a;
-                        border-radius: 50%;
-                        box-shadow: 0 2px 10px rgba(245, 106, 106, 0.3);
-                        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                        width: 40px !important;
-                        height: 40px !important;
-                        display: flex !important;
-                        align-items: center !important;
-                        justify-content: center !important;
-                        cursor: pointer;
-                        z-index: 10001;
-                        visibility: visible !important;
-                        opacity: 1 !important;
-                        border: none;
-                        color: white;
-                        font-size: 1.2rem;
-                        padding: 0;
-                        transform: translateX(-50%);
-                  }
-                  
-                  /* 사이드바가 닫혔을 때 버튼 위치 */
-                  body.sidebar-inactive .menu-toggle-btn {
-                        left: 20px !important;
-                        transform: translateX(0);
-                  }
-                  
-                  /* 사이드바 크기에 따른 버튼 위치 조정 */
-                  @media screen and (max-width: 1680px) {
-                        .menu-toggle-btn {
-                                left: calc(24em - 20px) !important;
-                        }
-                  }
-                  
-                  @media screen and (max-width: 1280px) {
-                        .menu-toggle-btn {
-                                left: 20px !important;
-                                transform: translateX(0);
-                        }
-                  }
-                  }
-                  
-                  @media screen and (max-width: 1280px) {
-                        
-                  .menu-toggle-btn {
-                        position: fixed !important;
-                        top: 20px !important;
-                        left: calc(26em - 20px) !important; /* 사이드바 오른쪽에 위치 */
-                        background: #f56a6a;
-                        border-radius: 50%;
-                        box-shadow: 0 2px 10px rgba(245, 106, 106, 0.3);
-                        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                        width: 40px !important;
-                        height: 40px !important;
-                        display: flex !important;
-                        align-items: center !important;
-                        justify-content: center !important;
-                        cursor: pointer;
-                        z-index: 10001;
-                        visibility: visible !important;
-                        opacity: 1 !important;
-                        border: none;
-                        color: white;
-                        font-size: 1.2rem;
-                        padding: 0;
-                        transform: translateX(-50%);
-                  }
-                  
-                  /* 사이드바가 닫혔을 때 버튼 위치 */
-                  body.sidebar-inactive .menu-toggle-btn {
-                        left: 20px !important;
-                        transform: translateX(0);
-                  }
-                  
-                  /* 사이드바 크기에 따른 버튼 위치 조정 */
-                  @media screen and (max-width: 1680px) {
-                        .menu-toggle-btn {
-                                left: calc(24em - 20px) !important;
-                        }
-                  }
-                  
-                  @media screen and (max-width: 1280px) {
-                        .menu-toggle-btn {
-                                left: 20px !important;
-                                transform: translateX(0);
-                        }
-                  }
-                  }
-			
-			.menu-toggle-btn:hover {
-				background: #f45858;
-				transform: translateY(-2px);
-				box-shadow: 0 4px 15px rgba(245, 106, 106, 0.4);
-			}
-			
-			/* PDF Viewer Styles */
-			.pdf-viewer-container {
-				background: white;
-				border-radius: 15px;
-				padding: 20px;
-				box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-			}
-			
-			.pdf-controls {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				margin-bottom: 20px;
-				padding: 15px;
-				background: #f8f9fa;
-				border-radius: 10px;
-			}
-			
-			.pdf-navigation {
-				display: flex;
-				align-items: center;
-				gap: 15px;
-			}
-			
-			.pdf-zoom {
-				display: flex;
-				align-items: center;
-				gap: 10px;
-			}
-			
-			.pdf-actions {
-				display: flex;
-				gap: 10px;
-			}
-			
-			#pdfCanvas {
-				border: 1px solid #e9ecef;
-				display: block;
-				margin: 0 auto;
-				max-width: 100%;
-			}
-			
-			.pdf-loading {
-				text-align: center;
-				padding: 40px;
-				color: #6c757d;
-			}
-			
-			.pdf-error {
-				text-align: center;
-				padding: 40px;
-				color: #dc3545;
-			}
-			
-			.page-info {
-				color: #495057;
-				font-weight: 500;
-			}
-			
-			.zoom-info {
-				color: #495057;
-				font-weight: 500;
-				min-width: 50px;
-				text-align: center;
-			}
-			
-			/* Annotations Panel */
-			.annotations-panel {
-				background: white;
-				border-radius: 15px;
-				padding: 20px;
-				margin-top: 20px;
-				box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-			}
-			
-			.annotation-item {
-				padding: 15px;
-				background: #f8f9fa;
-				border-radius: 8px;
-				margin-bottom: 10px;
-			}
-			
-			.annotation-page {
-				font-size: 0.85em;
-				color: #6c757d;
-				margin-bottom: 5px;
-			}
-			
-			.annotation-text {
-				color: #495057;
-			}
-			
-			.annotation-form {
-				display: flex;
-				gap: 10px;
-				margin-bottom: 20px;
-			}
-			
-			.annotation-form textarea {
-				flex: 1;
-				min-height: 60px;
-				resize: vertical;
-			}
-			
-			/* Full Screen Mode */
-			.fullscreen {
-				position: fixed;
-				top: 0;
-				left: 0;
-				right: 0;
-				bottom: 0;
-				z-index: 9999;
-				background: white;
-				padding: 20px;
-				overflow: auto;
-			}
-			
-			.fullscreen .pdf-viewer-container {
-				height: 100%;
-				display: flex;
-				flex-direction: column;
-			}
-			
-			.fullscreen #pdfCanvas {
-				flex: 1;
-				max-height: calc(100vh - 120px);
-			}
-		
-                  /* 아이콘 컨테이너 중앙 정렬 */
-                  .menu-toggle-btn i {
-                        display: flex !important;
-                        align-items: center !important;
-                        justify-content: center !important;
-                        width: 100%;
-                        height: 100%;
-                        position: relative;
-                  }
-                  
-                  /* 햄버거 메뉴 라인 위치 조정 */
-                  .menu-toggle-btn span,
-                  .menu-toggle-btn i::before,
-                  .menu-toggle-btn i::after {
-                        position: absolute;
-                        left: 50%;
-                        transform: translateX(-50%);
-                        width: 20px;
-                        height: 2px;
-                        background-color: white;
-                        transition: all 0.3s ease;
-                  }
-                  
-                  .menu-toggle-btn span {
-                        top: 50%;
-                        transform: translate(-50%, -50%);
-                  }
-                  
-                  .menu-toggle-btn i::before {
-                        content: '';
-                        top: calc(50% - 6px);
-                  }
-                  
-                  .menu-toggle-btn i::after {
-                        content: '';
-                        top: calc(50% + 4px);
-                  }
-                  
-                  /* 사이드바가 열려있을 때 X 모양으로 변형 */
-                  body:not(.sidebar-inactive) .menu-toggle-btn span {
-                        opacity: 0;
-                  }
-                  
-                  body:not(.sidebar-inactive) .menu-toggle-btn i::before {
-                        top: 50%;
-                        transform: translate(-50%, -50%) rotate(45deg);
-                  }
-                  
-                  body:not(.sidebar-inactive) .menu-toggle-btn i::after {
-                        top: 50%;
-                        transform: translate(-50%, -50%) rotate(-45deg);
-                  }
-                
-                  /* 아이콘 컨테이너 중앙 정렬 */
-                  .menu-toggle-btn i {
-                        display: flex !important;
-                        align-items: center !important;
-                        justify-content: center !important;
-                        width: 100%;
-                        height: 100%;
-                        position: relative;
-                  }
-                  
-                  /* 햄버거 메뉴 라인 위치 조정 */
-                  .menu-toggle-btn span,
-                  .menu-toggle-btn i::before,
-                  .menu-toggle-btn i::after {
-                        position: absolute;
-                        left: 50%;
-                        transform: translateX(-50%);
-                        width: 20px;
-                        height: 2px;
-                        background-color: white;
-                        transition: all 0.3s ease;
-                  }
-                  
-                  .menu-toggle-btn span {
-                        top: 50%;
-                        transform: translate(-50%, -50%);
-                  }
-                  
-                  .menu-toggle-btn i::before {
-                        content: '';
-                        top: calc(50% - 6px);
-                  }
-                  
-                  .menu-toggle-btn i::after {
-                        content: '';
-                        top: calc(50% + 4px);
-                  }
-                  
-                  /* 사이드바가 열려있을 때 X 모양으로 변형 */
-                  body:not(.sidebar-inactive) .menu-toggle-btn span {
-                        opacity: 0;
-                  }
-                  
-                  body:not(.sidebar-inactive) .menu-toggle-btn i::before {
-                        top: 50%;
-                        transform: translate(-50%, -50%) rotate(45deg);
-                  }
-                  
-                  body:not(.sidebar-inactive) .menu-toggle-btn i::after {
-                        top: 50%;
-                        transform: translate(-50%, -50%) rotate(-45deg);
-                  }
-                </style>
 	</head>
 	<body class="is-preload">
 		<!-- Menu Toggle Button -->
@@ -574,6 +148,7 @@
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
 		<script src="assets/js/api.js"></script>
+		<script src="/static/js/header-username.js"></script>
 		<script src="js/sidebar-toggle-global.js"></script>
 		<script src="js/dark-mode.js"></script>
 		<script src="js/sidebar-state.js"></script>
@@ -600,6 +175,9 @@
 			
 			// Page initialization
 			document.addEventListener('DOMContentLoaded', async function() {
+            // Update username display
+            document.getElementById('userWelcome').textContent = `Welcome, ${TokenManager.getUsername() || 'User'}!`;
+
 				// Set initial sidebar state
 				const sidebar = document.getElementById('sidebar');
 				sidebar.classList.add('inactive');
@@ -627,10 +205,13 @@
 			});
 
 			function updateHeader() {
-				const headerActions = document.getElementById('headerActions');
-				const username = TokenManager.getUsername();
-				headerActions.innerHTML = `
-					<li><span style="margin-right: 1em;">Welcome, ${username || 'User'}!</span></li>
+                const username = TokenManager.getUsername();
+                const userWelcome = document.getElementById('userWelcome');
+                if (userWelcome) {
+                    userWelcome.textContent = `Welcome, ${username || 'User'}!`;
+                    userWelcome.setAttribute('data-username', username || 'User');
+                }
+            }!</span></li>
 					<li><button class="button" onclick="logout()">Log Out</button></li>
 				`;
 			}
@@ -953,5 +534,6 @@
 				}
 			});
 		</script>
-	</body>
+		<script src="js/header-username-fix.js"></script>
+</body>
 </html>

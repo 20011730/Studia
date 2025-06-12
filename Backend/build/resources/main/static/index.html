@@ -10,8 +10,10 @@
 		<link rel="stylesheet" href="css/responsive.css" />
 		<link rel="stylesheet" href="css/sidebar-fixed.css" />
 		<link rel="stylesheet" href="css/menu-toggle.css" />
+		<link rel="stylesheet" href="css/header-unified-v2.css" />
 		<link rel="stylesheet" href="css/main-responsive.css" />
 		<link rel="stylesheet" href="css/dark-mode.css" />
+		<link rel="stylesheet" href="/static/css/header-override.css">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 		<style>
 		  #header {
@@ -119,30 +121,13 @@
 					<div id="main">
 						<div class="inner">
 
-							<!-- Header -->
-								<header id="header">
-								  <a href="index.html" class="logo">
-									<strong style="font-size: 2em;">Studia</strong>
-								  </a>
-								  <ul class="actions">
-									<li><button class="button big" onclick="openModal('loginModal')">Log In</button></li>
-									<li><button class="button primary big" onclick="openModal('signupModal')">Sign Up</button></li>
-								  </ul>
-								</header>
-
-
-							<!-- Banner -->
-								<section id="banner">
-									<div class="content">
-										<header>
-											<h1>Welcome to Studia</h1>
-										</header>
-										<p>Studia is a web-based learning assistant designed for university students.
-										It automatically summarizes lecture materials and generates practice questions based on the summaries to maximize learning efficiency.
-										With the schedule management feature, students can register class and exam dates, and follow personalized study plans suggested by AI.
-										</p>
-										<ul class="actions">
-											<li><a href="summary.html" class="button primary big">Start Using Studia</a></li>
+							                <!-- Header -->
+                <header id="header">
+                    <a href="index.html" class="logo">
+                        <strong style="font-size: 2em;">Studia</strong>
+                    </a>
+                    <ul class="icons header-user-info" id="headerActions">
+                        <li>
 										</ul>
 										<ul class="actions">
 											<li><a href="#features" class="button big">Feature Overview</a></li>
@@ -327,6 +312,7 @@
 
 		 <!-- API Script -->
 		    <script src="assets/js/api.js"></script>
+		<script src="/static/js/header-username.js"></script>
 		    <script src="js/sidebar-toggle-global.js"></script>
 		    <script src="js/sidebar-state.js"></script>
 		    <script src="js/dark-mode.js"></script>
@@ -352,14 +338,14 @@
 			  // 페이지 로드 시 인증 상태 확인 및 초기 설정
 			  document.addEventListener('DOMContentLoaded', function() {
 			      if (checkAuth()) {
-			          // 로그인된 경우 버튼 변경
-			          const headerActions = document.querySelector('#header .actions');
-			          const username = TokenManager.getUsername();
-			          headerActions.innerHTML = `
-			              <li><span style="margin-right: 1em;">Welcome, ${username || 'User'}!</span></li>
-			              <li><button class="button" onclick="logout()">Log Out</button></li>
-			          `;
-			      }
+                    // 로그인된 경우 버튼 변경
+                    const headerActions = document.getElementById('headerActions');
+                    const username = TokenManager.getUsername();
+                    headerActions.innerHTML = `
+                        <li><span style="margin-right: 1em;" data-username="">Welcome, ${username || 'User'}!</span></li>
+                        <li><a href="#" onclick="logout()" class="button small logout-btn">Logout</a></li>
+                    `;
+                }
 			  });
 			  
 			  // 로그인 처리
@@ -432,13 +418,14 @@
 			  document.addEventListener('DOMContentLoaded', function() {
 			      // Check authentication
 			      if (checkAuth()) {
-			          const headerActions = document.querySelector('#header .actions');
-			          const username = TokenManager.getUsername();
-			          headerActions.innerHTML = `
-			              <li><span style="margin-right: 1em;">Welcome, ${username || 'User'}!</span></li>
-			              <li><button class="button" onclick="logout()">Log Out</button></li>
-			          `;
-			      }
+                    // 로그인된 경우 버튼 변경
+                    const headerActions = document.getElementById('headerActions');
+                    const username = TokenManager.getUsername();
+                    headerActions.innerHTML = `
+                        <li><span style="margin-right: 1em;" data-username="">Welcome, ${username || 'User'}!</span></li>
+                        <li><a href="#" onclick="logout()" class="button small logout-btn">Logout</a></li>
+                    `;
+                }
 			      
 			      // Initialize Swiper with fixed autoplay
 			      let swiper = new Swiper('.mySwiper', {

@@ -9,8 +9,10 @@
 		<link rel="stylesheet" href="css/responsive.css" />
 		<link rel="stylesheet" href="css/sidebar-fixed.css" />
 		<link rel="stylesheet" href="css/menu-toggle.css" />
+		<link rel="stylesheet" href="css/header-unified-v2.css" />
 		<link rel="stylesheet" href="css/main-responsive.css" />
 		<link rel="stylesheet" href="css/dark-mode.css" />
+		<link rel="stylesheet" href="/static/css/header-override.css">
 		<style>
 			/* Modern Quiz Container */
 			.quiz-container {
@@ -330,15 +332,15 @@
 			<!-- Main -->
 			<div id="main">
 				<div class="inner">
-					<!-- Header -->
-					<header id="header">
-						<a href="index.html" class="logo">
-							<strong style="font-size: 2em;">Studia</strong>
-						</a>
-						<ul class="actions" id="headerActions">
-							<!-- Will be populated by JS -->
-						</ul>
-					</header>
+					                <!-- Header -->
+                <header id="header">
+                    <a href="index.html" class="logo">
+                        <strong style="font-size: 2em;">Studia</strong>
+                    </a>
+                    <ul class="icons header-user-info">
+                        <li><a href="#" onclick="logout()" class="button small logout-btn">Logout</a></li>
+                    </ul>
+                </header>
 
 					<!-- Content -->
 					<section>
@@ -471,6 +473,7 @@
 		<script src="js/util.js"></script>
 		<script src="js/main.js"></script>
 		<script src="js/api.js"></script>
+		<script src="/static/js/header-username.js"></script>
 		<script src="js/sidebar-toggle-global.js"></script>
 		<script src="js/dark-mode.js"></script>
 		<script src="js/sidebar-state.js"></script>
@@ -510,10 +513,14 @@
 			});
 
 			function updateHeader() {
-				const headerActions = document.getElementById('headerActions');
-				const username = TokenManager.getUsername();
-				headerActions.innerHTML = `
-					<li><span style="margin-right: 1em;">Welcome, ${username || 'User'}!</span></li>
+                const username = TokenManager.getUsername();
+                const userWelcome = document.getElementById('userWelcome');
+                if (userWelcome) {
+                    userWelcome.textContent = `Welcome, ${username || 'User'}!`;
+                    userWelcome.setAttribute('data-username', username || 'User');
+                }
+            }!`;
+            }!</span></li>
 					<li><button class="button" onclick="logout()">Log Out</button></li>
 				`;
 			}
@@ -1182,5 +1189,5 @@
 				startQuiz(quizId);
 			}
 		</script>
-	</body>
+		</body>
 </html>

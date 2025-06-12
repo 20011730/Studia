@@ -2,7 +2,7 @@
 .menu-toggle-btn {
     position: fixed !important;
     top: 20px !important;
-    left: 26em !important; /* 사이드바 오른쪽 경계에 위치 */
+    left: calc(26em - 100px) !important; /* 사이드바 우측 가장자리에서 100px 안쪽 */
     background: #f56a6a;
     border-radius: 50%;
     box-shadow: 0 2px 10px rgba(245, 106, 106, 0.3);
@@ -24,36 +24,31 @@
     font-size: 1.2rem;
     padding: 0;
     overflow: hidden;
-    transform: translateX(-50%); /* 버튼의 중심을 경계선에 맞춤 */
 }
 
 /* 사이드바가 닫혔을 때 버튼 위치 */
 body.sidebar-inactive .menu-toggle-btn {
-    left: 20px !important; /* 왼쪽 끝에서 20px */
-    transform: translateX(0); /* 왼쪽에서는 중앙 정렬 해제 */
+    left: 20px !important; /* 왼쪽 끝으로 이동 */
 }
 
 /* 반응형 디자인 */
 @media screen and (max-width: 1680px) {
     .menu-toggle-btn {
-        left: 24em !important; /* 중간 화면에서 사이드바 너비 */
+        left: calc(24em - 100px) !important;
     }
     
     body.sidebar-inactive .menu-toggle-btn {
         left: 20px !important;
-        transform: translateX(0);
     }
 }
 
 @media screen and (max-width: 1280px) {
     .menu-toggle-btn {
         left: 20px !important;
-        transform: translateX(0);
     }
     
     body:not(.sidebar-inactive) .menu-toggle-btn {
-        left: 22em !important; /* 모바일에서 사이드바 너비 */
-        transform: translateX(-50%);
+        left: calc(22em - 100px) !important; /* 모바일에서도 적절한 위치 */
     }
 }
 
