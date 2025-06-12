@@ -54,3 +54,4 @@ Backend/build/libs/
 *.gz
 *.sh
 *.conf
+.env.local
