@@ -9,6 +9,8 @@
 		<link rel="stylesheet" href="css/fontawesome-all.min.css" />
 		<link rel="stylesheet" href="css/responsive.css" />
 		<link rel="stylesheet" href="css/sidebar-fixed.css" />
+		<link rel="stylesheet" href="css/menu-toggle.css" />
+		<link rel="stylesheet" href="css/main-responsive.css" />
 		<link rel="stylesheet" href="css/dark-mode.css" />
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 		<style>
@@ -21,179 +23,6 @@
 			margin: 0;
 		  }
 		  
-		  /* Menu Toggle Button Styling - Modern Design */
-		  .menu-toggle-btn {
-			position: fixed !important;
-			top: 20px !important;
-			left: 20px !important;
-			background: #f56a6a;
-			border-radius: 8px;
-			box-shadow: 0 2px 10px rgba(245, 106, 106, 0.3);
-			transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-			width: 40px !important;
-			height: 40px !important;
-			line-height: 40px !important;
-			text-align: center;
-			z-index: 10001;
-			display: flex !important;
-			align-items: center;
-			justify-content: center;
-			cursor: pointer;
-			visibility: visible !important;
-			opacity: 1 !important;
-			border: none;
-			color: white;
-			font-size: 1.2rem;
-			padding: 0;
-		  }
-		  
-		  .menu-toggle-btn:hover {
-			background: #f45858;
-			transform: translateY(-2px);
-			box-shadow: 0 4px 15px rgba(245, 106, 106, 0.4);
-		  }
-		  
-		  .menu-toggle-btn:active {
-			transform: translateY(0);
-		  }
-		  
-		  /* Toggle button icon animation */
-		  .menu-toggle-btn i {
-			transition: all 0.3s ease;
-			width: 20px;
-			height: 20px;
-			position: relative;
-			display: block;
-		  }
-		  
-		  .menu-toggle-btn i::before,
-		  .menu-toggle-btn i::after,
-		  .menu-toggle-btn span {
-			content: '';
-			position: absolute;
-			background-color: white;
-			transition: all 0.3s ease;
-		  }
-		  
-		  .menu-toggle-btn i::before {
-			left: 0;
-			top: -6px;
-			width: 20px;
-			height: 2px;
-		  }
-		  
-		  .menu-toggle-btn span {
-			left: 0;
-			top: 0;
-			width: 20px;
-			height: 2px;
-		  }
-		  
-		  .menu-toggle-btn i::after {
-			left: 0;
-			top: 6px;
-			width: 20px;
-			height: 2px;
-		  }
-		  
-		  /* Toggle button when sidebar is active */
-		  body:not(.sidebar-inactive) .menu-toggle-btn i::before {
-			transform: rotate(45deg);
-			top: 0;
-		  }
-		  
-		  body:not(.sidebar-inactive) .menu-toggle-btn span {
-			opacity: 0;
-		  }
-		  
-		  body:not(.sidebar-inactive) .menu-toggle-btn i::after {
-			transform: rotate(-45deg);
-			top: 0;
-		  }
-		  
-		  /* Main content animation when sidebar opens/closes */
-		  #main {
-			transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-			margin-left: 0;
-			width: 100%;
-		  }
-		  
-		  body:not(.sidebar-inactive) #main {
-			margin-left: 26em;
-			width: calc(100% - 26em);
-		  }
-		  
-		  @media screen and (max-width: 1680px) {
-			body:not(.sidebar-inactive) #main {
-				margin-left: 24em;
-				width: calc(100% - 24em);
-			}
-		  }
-		  
-		  @media screen and (max-width: 1280px) {
-			body:not(.sidebar-inactive) #main {
-				margin-left: 0;
-				width: 100%;
-			}
-		  }
-		  
-		  /* Sidebar Animation */
-		  #sidebar {
-			transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-			background: linear-gradient(180deg, #f5f6f7 0%, #e9ecef 100%);
-		  }
-		  
-		  #sidebar.inactive {
-			margin-left: -26em;
-			box-shadow: none;
-		  }
-		  
-		  #sidebar:not(.inactive) {
-			box-shadow: 5px 0 25px rgba(0, 0, 0, 0.1);
-		  }
-		  
-		  @media screen and (max-width: 1680px) {
-			#sidebar.inactive {
-				margin-left: -24em;
-			}
-		  }
-		  
-		  /* Menu open/close animation */
-		  #sidebar .inner {
-			opacity: 1;
-			transform: translateX(0);
-			transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-		  }
-		  
-		  #sidebar.inactive .inner {
-			opacity: 0;
-			transform: translateX(-20px);
-			transition-delay: 0s;
-		  }
-		  
-		  #sidebar:not(.inactive) .inner {
-			transition-delay: 0.2s;
-		  }
-		  
-		  /* Menu items animation */
-		  #sidebar nav ul li {
-			transform: translateX(0);
-			opacity: 1;
-			transition: all 0.3s ease;
-		  }
-		  
-		  #sidebar.inactive nav ul li {
-			transform: translateX(-20px);
-			opacity: 0;
-		  }
-		  
-		  #sidebar:not(.inactive) nav ul li:nth-child(1) { transition-delay: 0.3s; }
-		  #sidebar:not(.inactive) nav ul li:nth-child(2) { transition-delay: 0.35s; }
-		  #sidebar:not(.inactive) nav ul li:nth-child(3) { transition-delay: 0.4s; }
-		  #sidebar:not(.inactive) nav ul li:nth-child(4) { transition-delay: 0.45s; }
-		  #sidebar:not(.inactive) nav ul li:nth-child(5) { transition-delay: 0.5s; }
-		  #sidebar:not(.inactive) nav ul li:nth-child(6) { transition-delay: 0.55s; }
-		  #sidebar:not(.inactive) nav ul li:nth-child(7) { transition-delay: 0.6s; }
 		  .modal {
 		    display: none;
 		    position: fixed;
@@ -275,7 +104,6 @@
 		  .swiper-pagination-bullet-active {
 		    background: #f56a6a !important;
 		  }
-			
 		</style>
 	</head>
 	<body class="is-preload">
@@ -466,7 +294,7 @@
 			    <span class="close" onclick="closeModal('signupModal')">&times;</span>
 			    <h2>Sign Up</h2>
 			    <form onsubmit="handleSignup(event)">
-				  <input type="text" name="username" placeholder="Name" required minlength="2"><br><br>
+				  <input type="text" name="name" placeholder="Name" required minlength="2"><br><br>
 			      <input type="email" name="email" placeholder="Email" required><br><br>
 				  <input type="password" name="password" placeholder="Password (min 6 characters)" required minlength="6" 
 				         pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
@@ -492,15 +320,17 @@
 			<script src="js/breakpoints.min.js"></script>
 			<script src="js/util.js"></script>
 			<script src="js/main.js"></script>
+			<script src="js/modal-manager.js"></script>
 			<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
 
 		 <!-- API Script -->
 		    <script src="assets/js/api.js"></script>
+		    <script src="js/sidebar-toggle-global.js"></script>
+		    <script src="js/sidebar-state.js"></script>
 		    <script src="js/dark-mode.js"></script>
 		    <script src="js/websocket.js"></script>
-		    <script src="js/sidebar-state.js"></script>
 		    
 		 <!-- Modal Scripts -->
 		    <script>
@@ -518,21 +348,6 @@
 				  closeModal('signupModal');
 			    }
 			  });
-			  
-			  // Toggle Sidebar Function
-			  function toggleSidebar() {
-			      const sidebar = document.getElementById('sidebar');
-			      const main = document.getElementById('main');
-			      const toggleBtn = document.querySelector('.menu-toggle-btn');
-			      
-			      sidebar.classList.toggle('inactive');
-			      
-			      if (sidebar.classList.contains('inactive')) {
-			          document.body.classList.add('sidebar-inactive');
-			      } else {
-			          document.body.classList.remove('sidebar-inactive');
-			      }
-			  }
 			  
 			  // 페이지 로드 시 인증 상태 확인 및 초기 설정
 			  document.addEventListener('DOMContentLoaded', function() {
@@ -573,7 +388,7 @@
 			  async function handleSignup(event) {
 			      event.preventDefault();
 			      const form = event.target;
-			      const username = form.querySelector('input[placeholder="Name"]').value;
+			      const name = form.querySelector('input[placeholder="Name"]').value;
 			      const email = form.querySelector('input[type="email"]').value;
 			      const password = form.querySelector('input[type="password"]').value;
 			      const university = form.querySelector('input[placeholder="University"]').value;
@@ -581,14 +396,14 @@
 			      const gradeSelect = form.querySelector('select[name="grade"]');
 			      const grade = gradeSelect.value ? parseInt(gradeSelect.value) : null;
 			      
-			      console.log('Attempting signup with:', { username, email, university });
+			      console.log('Attempting signup with:', { name, email, university });
 			      
 			      try {
 			          // Match the SignupRequest DTO structure
 			          const signupData = { 
 			              email, 
 			              password, 
-			              username,
+			              name,
 			              university
 			          };
 			          
@@ -615,11 +430,6 @@
 			  
 			  // Initialize Swiper with autoplay fix
 			  document.addEventListener('DOMContentLoaded', function() {
-			      // Set initial sidebar state - start opened on main page
-			      const sidebar = document.getElementById('sidebar');
-			      sidebar.classList.remove('inactive');
-			      document.body.classList.remove('sidebar-inactive');
-			      
 			      // Check authentication
 			      if (checkAuth()) {
 			          const headerActions = document.querySelector('#header .actions');

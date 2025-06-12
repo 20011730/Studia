@@ -8,35 +8,197 @@
     <link rel="stylesheet" href="css/fontawesome-all.min.css" />
     <link rel="stylesheet" href="css/responsive.css" />
     <link rel="stylesheet" href="css/sidebar-fixed.css" />
-    <link rel="stylesheet" href="css/dark-mode.css" />
-    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css' rel='stylesheet' />
+		<link rel="stylesheet" href="css/menu-toggle.css" />    <link rel="stylesheet" href="css/dark-mode.css" />
+		<link rel="stylesheet" href="css/main-responsive.css" />    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css' rel='stylesheet' />
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js'></script>
     <style>
         /* Menu Toggle Button Styling - Modern Design */
-        .menu-toggle-btn {
-            position: fixed !important;
-            top: 20px !important;
-            left: 20px !important;
-            background: #f56a6a;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(245, 106, 106, 0.3);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            width: 40px !important;
-            height: 40px !important;
-            line-height: 40px !important;
-            text-align: center;
-            z-index: 10001;
-            display: flex !important;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            visibility: visible !important;
-            opacity: 1 !important;
-            border: none;
-            color: white;
-            font-size: 1.2rem;
-            padding: 0;
-        }
+        
+                  
+                  .menu-toggle-btn {
+                        position: fixed !important;
+                        top: 20px !important;
+                        left: calc(26em - 20px) !important; /* 사이드바 오른쪽에 위치 */
+                        background: #f56a6a;
+                        border-radius: 50%;
+                        box-shadow: 0 2px 10px rgba(245, 106, 106, 0.3);
+                        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                        width: 40px !important;
+                        height: 40px !important;
+                        display: flex !important;
+                        align-items: center !important;
+                        justify-content: center !important;
+                        cursor: pointer;
+                        z-index: 10001;
+                        visibility: visible !important;
+                        opacity: 1 !important;
+                        border: none;
+                        color: white;
+                        font-size: 1.2rem;
+                        padding: 0;
+                        transform: translateX(-50%);
+                  }
+                  
+                  /* 사이드바가 닫혔을 때 버튼 위치 */
+                  body.sidebar-inactive .menu-toggle-btn {
+                        left: 20px !important;
+                        transform: translateX(0);
+                  }
+                  
+                  /* 사이드바 크기에 따른 버튼 위치 조정 */
+                  @media screen and (max-width: 1680px) {
+                        .menu-toggle-btn {
+                                left: calc(24em - 20px) !important;
+                        }
+                  }
+                  
+                  @media screen and (max-width: 1280px) {
+                        .menu-toggle-btn {
+                                left: 20px !important;
+                                transform: translateX(0);
+                        }
+                  }
+                  
+                  /* 사이드바가 닫혔을 때 버튼 위치 */
+                  body.sidebar-inactive 
+                  .menu-toggle-btn {
+                        position: fixed !important;
+                        top: 20px !important;
+                        left: calc(26em - 20px) !important; /* 사이드바 오른쪽에 위치 */
+                        background: #f56a6a;
+                        border-radius: 50%;
+                        box-shadow: 0 2px 10px rgba(245, 106, 106, 0.3);
+                        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                        width: 40px !important;
+                        height: 40px !important;
+                        display: flex !important;
+                        align-items: center !important;
+                        justify-content: center !important;
+                        cursor: pointer;
+                        z-index: 10001;
+                        visibility: visible !important;
+                        opacity: 1 !important;
+                        border: none;
+                        color: white;
+                        font-size: 1.2rem;
+                        padding: 0;
+                        transform: translateX(-50%);
+                  }
+                  
+                  /* 사이드바가 닫혔을 때 버튼 위치 */
+                  body.sidebar-inactive .menu-toggle-btn {
+                        left: 20px !important;
+                        transform: translateX(0);
+                  }
+                  
+                  /* 사이드바 크기에 따른 버튼 위치 조정 */
+                  @media screen and (max-width: 1680px) {
+                        .menu-toggle-btn {
+                                left: calc(24em - 20px) !important;
+                        }
+                  }
+                  
+                  @media screen and (max-width: 1280px) {
+                        .menu-toggle-btn {
+                                left: 20px !important;
+                                transform: translateX(0);
+                        }
+                  }
+                  
+                  /* 사이드바 크기에 따른 버튼 위치 조정 */
+                  @media screen and (max-width: 1680px) {
+                        
+                  .menu-toggle-btn {
+                        position: fixed !important;
+                        top: 20px !important;
+                        left: calc(26em - 20px) !important; /* 사이드바 오른쪽에 위치 */
+                        background: #f56a6a;
+                        border-radius: 50%;
+                        box-shadow: 0 2px 10px rgba(245, 106, 106, 0.3);
+                        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                        width: 40px !important;
+                        height: 40px !important;
+                        display: flex !important;
+                        align-items: center !important;
+                        justify-content: center !important;
+                        cursor: pointer;
+                        z-index: 10001;
+                        visibility: visible !important;
+                        opacity: 1 !important;
+                        border: none;
+                        color: white;
+                        font-size: 1.2rem;
+                        padding: 0;
+                        transform: translateX(-50%);
+                  }
+                  
+                  /* 사이드바가 닫혔을 때 버튼 위치 */
+                  body.sidebar-inactive .menu-toggle-btn {
+                        left: 20px !important;
+                        transform: translateX(0);
+                  }
+                  
+                  /* 사이드바 크기에 따른 버튼 위치 조정 */
+                  @media screen and (max-width: 1680px) {
+                        .menu-toggle-btn {
+                                left: calc(24em - 20px) !important;
+                        }
+                  }
+                  
+                  @media screen and (max-width: 1280px) {
+                        .menu-toggle-btn {
+                                left: 20px !important;
+                                transform: translateX(0);
+                        }
+                  }
+                  }
+                  
+                  @media screen and (max-width: 1280px) {
+                        
+                  .menu-toggle-btn {
+                        position: fixed !important;
+                        top: 20px !important;
+                        left: calc(26em - 20px) !important; /* 사이드바 오른쪽에 위치 */
+                        background: #f56a6a;
+                        border-radius: 50%;
+                        box-shadow: 0 2px 10px rgba(245, 106, 106, 0.3);
+                        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                        width: 40px !important;
+                        height: 40px !important;
+                        display: flex !important;
+                        align-items: center !important;
+                        justify-content: center !important;
+                        cursor: pointer;
+                        z-index: 10001;
+                        visibility: visible !important;
+                        opacity: 1 !important;
+                        border: none;
+                        color: white;
+                        font-size: 1.2rem;
+                        padding: 0;
+                        transform: translateX(-50%);
+                  }
+                  
+                  /* 사이드바가 닫혔을 때 버튼 위치 */
+                  body.sidebar-inactive .menu-toggle-btn {
+                        left: 20px !important;
+                        transform: translateX(0);
+                  }
+                  
+                  /* 사이드바 크기에 따른 버튼 위치 조정 */
+                  @media screen and (max-width: 1680px) {
+                        .menu-toggle-btn {
+                                left: calc(24em - 20px) !important;
+                        }
+                  }
+                  
+                  @media screen and (max-width: 1280px) {
+                        .menu-toggle-btn {
+                                left: 20px !important;
+                                transform: translateX(0);
+                        }
+                  }
+                  }
         
         .menu-toggle-btn:hover {
             background: #f45858;
@@ -49,13 +211,19 @@
         }
         
         /* Toggle button icon animation */
-        .menu-toggle-btn i {
-            transition: all 0.3s ease;
-            width: 20px;
-            height: 20px;
-            position: relative;
-            display: block;
-        }
+        
+                  /* Toggle button icon animation */
+                  
+                  /* Toggle button icon animation */
+                  .menu-toggle-btn i {
+                        transition: all 0.4s ease;
+                        width: 20px;
+                        height: 20px;
+                        position: relative;
+                        display: flex !important;
+                        align-items: center !important;
+                        justify-content: center !important;
+                  }
         
         .menu-toggle-btn i::before,
         .menu-toggle-btn i::after,
@@ -63,7 +231,7 @@
             content: '';
             position: absolute;
             background-color: white;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
         }
         
         .menu-toggle-btn i::before {
@@ -385,7 +553,113 @@
             border-radius: 5px;
             transition: all 0.3s;
         }
-    </style>
+    
+                  /* 아이콘 컨테이너 중앙 정렬 */
+                  .menu-toggle-btn i {
+                        display: flex !important;
+                        align-items: center !important;
+                        justify-content: center !important;
+                        width: 100%;
+                        height: 100%;
+                        position: relative;
+                  }
+                  
+                  /* 햄버거 메뉴 라인 위치 조정 */
+                  .menu-toggle-btn span,
+                  .menu-toggle-btn i::before,
+                  .menu-toggle-btn i::after {
+                        position: absolute;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        width: 20px;
+                        height: 2px;
+                        background-color: white;
+                        transition: all 0.3s ease;
+                  }
+                  
+                  .menu-toggle-btn span {
+                        top: 50%;
+                        transform: translate(-50%, -50%);
+                  }
+                  
+                  .menu-toggle-btn i::before {
+                        content: '';
+                        top: calc(50% - 6px);
+                  }
+                  
+                  .menu-toggle-btn i::after {
+                        content: '';
+                        top: calc(50% + 4px);
+                  }
+                  
+                  /* 사이드바가 열려있을 때 X 모양으로 변형 */
+                  body:not(.sidebar-inactive) .menu-toggle-btn span {
+                        opacity: 0;
+                  }
+                  
+                  body:not(.sidebar-inactive) .menu-toggle-btn i::before {
+                        top: 50%;
+                        transform: translate(-50%, -50%) rotate(45deg);
+                  }
+                  
+                  body:not(.sidebar-inactive) .menu-toggle-btn i::after {
+                        top: 50%;
+                        transform: translate(-50%, -50%) rotate(-45deg);
+                  }
+                
+                  /* 아이콘 컨테이너 중앙 정렬 */
+                  .menu-toggle-btn i {
+                        display: flex !important;
+                        align-items: center !important;
+                        justify-content: center !important;
+                        width: 100%;
+                        height: 100%;
+                        position: relative;
+                  }
+                  
+                  /* 햄버거 메뉴 라인 위치 조정 */
+                  .menu-toggle-btn span,
+                  .menu-toggle-btn i::before,
+                  .menu-toggle-btn i::after {
+                        position: absolute;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        width: 20px;
+                        height: 2px;
+                        background-color: white;
+                        transition: all 0.3s ease;
+                  }
+                  
+                  .menu-toggle-btn span {
+                        top: 50%;
+                        transform: translate(-50%, -50%);
+                  }
+                  
+                  .menu-toggle-btn i::before {
+                        content: '';
+                        top: calc(50% - 6px);
+                  }
+                  
+                  .menu-toggle-btn i::after {
+                        content: '';
+                        top: calc(50% + 4px);
+                  }
+                  
+                  /* 사이드바가 열려있을 때 X 모양으로 변형 */
+                  body:not(.sidebar-inactive) .menu-toggle-btn span {
+                        opacity: 0;
+                  }
+                  
+                  body:not(.sidebar-inactive) .menu-toggle-btn i::before {
+                        top: 50%;
+                        transform: translate(-50%, -50%) rotate(45deg);
+                  }
+                  
+                  body:not(.sidebar-inactive) .menu-toggle-btn i::after {
+                        top: 50%;
+                        transform: translate(-50%, -50%) rotate(-45deg);
+                  }
+                </style>
 </head>
 <body class="is-preload">
     <!-- Menu Toggle Button -->
@@ -663,21 +937,12 @@
     <script src="js/util.js"></script>
     <script src="js/main.js"></script>
     <script src="assets/js/api.js"></script>
-    <script src="js/sidebar-toggle.js"></script>
+    <script src="js/sidebar-toggle-global.js"></script>
     <script src="js/dark-mode.js"></script>
     <script src="js/sidebar-state.js"></script>
+    <script src="js/modal-manager.js"></script>
     <script>
         // Toggle Sidebar Function
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const main = document.getElementById('main');
-            const toggleBtn = document.querySelector('.menu-toggle-btn');
-            
-            sidebar.classList.toggle('inactive');
-            
-            if (sidebar.classList.contains('inactive')) {
-                document.body.classList.add('sidebar-inactive');
-            } else {
                 document.body.classList.remove('sidebar-inactive');
             }
         }
@@ -708,13 +973,13 @@
             }
             
             try {
-                // Initialize calendar first
-                initializeCalendar();
-                console.log('Calendar initialized');
-                
-                // Then load schedules
+                // Load schedules first
                 await loadSchedules();
                 console.log('Schedules loaded successfully');
+                
+                // Initialize calendar
+                initializeCalendar();
+                console.log('Calendar initialized');
                 
                 // Load TODOs
                 loadTodos();
@@ -725,43 +990,67 @@
                     const classFilter = document.getElementById('classFilterCalendar');
                     const classSelect = document.getElementById('classSelect');
                     
-                    // Get classes from schedules
-                    let scheduleClasses = [...new Set(schedules
-                        .filter(s => s.className && s.className.trim())
-                        .map(s => s.className))];
+                    // 여러 소스에서 클래스 수집
+                    let allClasses = new Set();
                     
-                    // Also get classes from Study Plans where type is 'class'
-                    let classTypeSchedules = [...new Set(schedules
-                        .filter(s => s.type === 'class' && s.title)
-                        .map(s => s.title))];
+                    // 1. 스케줄에서 className 필드 수집
+                    schedules.forEach(s => {
+                        if (s.className && s.className.trim()) {
+                            allClasses.add(s.className);
+                        }
+                    });
                     
-                    // Get classes from materials (if available)
-                    let materialClasses = [];
+                    // 2. class 타입 스케줄의 title 수집
+                    schedules.forEach(s => {
+                        if (s.type === 'class' && s.title && s.title.trim()) {
+                            allClasses.add(s.title);
+                        }
+                    });
+                    
+                    // 3. Study Materials에서 클래스 수집
                     try {
                         const materials = await API.materials.list();
-                        materialClasses = [...new Set(materials
-                            .filter(m => m.className && m.className.trim())
-                            .map(m => m.className))];
+                        materials.forEach(m => {
+                            if (m.className && m.className.trim()) {
+                                allClasses.add(m.className);
+                            }
+                        });
                     } catch (error) {
                         console.log('Could not fetch materials for class list:', error);
                     }
                     
-                    // Combine all unique classes
-                    const allClasses = [...new Set([...scheduleClasses, ...classTypeSchedules, ...materialClasses])];
-                    console.log('All available classes:', allClasses);
-                    
-                    // Update calendar filter
-                    if (classFilter) {
-                        classFilter.innerHTML = '<option value="">All Classes</option>' +
-                            allClasses.map(className => 
-                                `<option value="${className}">${className}</option>`
-                            ).join('');
+                    // 4. 로컬 스토리지에서 이전 클래스 목록 수집
+                    const savedClasses = localStorage.getItem('studiaClasses');
+                    if (savedClasses) {
+                        try {
+                            const classes = JSON.parse(savedClasses);
+                            classes.forEach(c => allClasses.add(c));
+                        } catch (e) {
+                            console.error('Error parsing saved classes:', e);
+                        }
                     }
                     
-                    // Update form select
+                    // Set을 배열로 변환하고 정렬
+                    const classArray = Array.from(allClasses).sort();
+                    
+                    // 로컬 스토리지에 저장
+                    localStorage.setItem('studiaClasses', JSON.stringify(classArray));
+                    
+                    console.log('All available classes:', classArray);
+                    
+                    // 캘린더 필터 업데이트
+                    if (classFilter) {
+                        classFilter.innerHTML = '<option value="">All Classes</option>' +
+                            classArray.map(className => 
+                                `<option value="${className}">${className}</option>`
+                            ).join('') +
+                            '<option value="TODO List">TODO List</option>'; // TODO 필터 추가
+                    }
+                    
+                    // 폼 셀렉트 업데이트
                     if (classSelect) {
                         classSelect.innerHTML = '<option value="">-- Select existing class --</option>' +
-                            allClasses.map(className => 
+                            classArray.map(className => 
                                 `<option value="${className}">${className}</option>`
                             ).join('') +
                             '<option value="__new__">+ Add new class</option>';
@@ -854,6 +1143,7 @@
             try {
                 calendar = new FullCalendar.Calendar(calendarEl, {
                     initialView: 'dayGridMonth',
+                    timeZone: 'local', // 로컬 시간대 사용
                     headerToolbar: {
                         left: 'prev,next today',
                         center: 'title',
@@ -861,7 +1151,7 @@
                     },
                     editable: true,
                     droppable: true,
-                    events: [], // Start with empty events
+                    events: getCalendarEvents(),
                     eventClick: function(info) {
                         showEventModal(info.event);
                     },
@@ -880,6 +1170,8 @@
                             allDaySlot: true
                         }
                     },
+                    allDayDefault: false, // 기본값을 false로 설정
+                    forceEventDuration: true, // 이벤트 기간 강제
                     eventDidMount: function(info) {
                         // Add tooltip or other event customizations
                         console.log('Event mounted:', info.event.title);
@@ -919,11 +1211,23 @@
                     }
                 }
                 
+                // All Day 이벤트 처리
+                let startDateTime, endDateTime;
+                if (schedule.allDay) {
+                    // All Day 이벤트는 날짜만 사용 (시간 정보 제외)
+                    startDateTime = schedule.date;
+                    endDateTime = null;
+                } else {
+                    // 시간이 있는 이벤트
+                    startDateTime = schedule.date + 'T' + schedule.startTime;
+                    endDateTime = schedule.date + 'T' + schedule.endTime;
+                }
+                
                 return {
                     id: schedule.id,
                     title: schedule.title,
-                    start: schedule.allDay ? schedule.date : schedule.date + 'T' + schedule.startTime,
-                    end: schedule.allDay ? null : schedule.date + 'T' + schedule.endTime,
+                    start: startDateTime,
+                    end: endDateTime,
                     allDay: schedule.allDay || false,
                     backgroundColor: schedule.color || defaultColor,
                     borderColor: schedule.color || defaultColor,
@@ -974,9 +1278,13 @@
         async function loadSchedules() {
             try {
                 console.log('Loading schedules from server...');
+                
+                // 이전 스케줄 개수 저장 (비교용)
+                const previousScheduleCount = schedules.length;
+                
                 // 백엔드에서 스케줄 불러오기
                 const serverSchedules = await API.studyPlans.getAll();
-                console.log('Loaded schedules from server:', serverSchedules);
+                console.log('Loaded schedules:', serverSchedules);
                 
                 // 서버 데이터를 로컬 형식으로 변환
                 schedules = serverSchedules.map(plan => ({
@@ -984,8 +1292,8 @@
                     type: plan.type || 'study',
                     title: plan.title,
                     date: plan.date,
-                    startTime: plan.startTime || '00:00',
-                    endTime: plan.endTime || '23:59',
+                    startTime: plan.startTime ? plan.startTime.substring(0, 5) : '00:00', // HH:mm:ss -> HH:mm
+                    endTime: plan.endTime ? plan.endTime.substring(0, 5) : '23:59',     // HH:mm:ss -> HH:mm
                     allDay: plan.allDay || false,
                     color: plan.color || '#667eea',
                     repeat: plan.repeat || false,
@@ -996,23 +1304,34 @@
                     description: plan.description || null
                 }));
                 
-                console.log('Converted schedules:', schedules);
-                
                 // 로컬 스토리지와 동기화 (백업용)
                 localStorage.setItem('studiaSchedules', JSON.stringify(schedules));
                 
                 // 클래스 필터 업데이트
                 if (window.updateClassFilter) {
-                    updateClassFilter();
+                    await updateClassFilter();
                 }
                 
-                // 캘린더가 이미 초기화되어 있으면 이벤트 업데이트
+                // 캘린더 업데이트 - 이벤트 소스 완전히 재설정
                 if (calendar) {
-                    console.log('Updating calendar with new events');
+                    // 모든 이벤트 제거
                     calendar.removeAllEvents();
+                    
+                    // 새 이벤트 추가
                     const events = getCalendarEvents();
-                    console.log('Events to add to calendar:', events);
-                    calendar.addEventSource(events);
+                    events.forEach(event => {
+                        calendar.addEvent(event);
+                    });
+                    
+                    // 새로운 일정이 추가되었으면 알림
+                    if (schedules.length > previousScheduleCount) {
+                        const newCount = schedules.length - previousScheduleCount;
+                        if (window.showNotification) {
+                            showNotification(`${newCount} new schedule(s) added to calendar!`, 'success');
+                        }
+                    }
+                    
+                    // 캘린더 리렌더링
                     calendar.render();
                 }
                 
@@ -1031,14 +1350,35 @@
                 
                 // 클래스 필터 업데이트
                 if (window.updateClassFilter) {
-                    updateClassFilter();
+                    await updateClassFilter();
                 }
                 
-                // 캘린더가 이미 초기화되어 있으면 이벤트 업데이트
+                // 캘린더 업데이트
                 if (calendar) {
                     calendar.removeAllEvents();
-                    calendar.addEventSource(getCalendarEvents());
+                    const events = getCalendarEvents();
+                    events.forEach(event => {
+                        calendar.addEvent(event);
+                    });
                 }
+            }
+        }
+        
+        // 실시간 동기화를 위한 주기적 새로고침 (선택사항)
+        let syncInterval;
+        
+        function startAutoSync() {
+            // 5분마다 서버와 동기화
+            syncInterval = setInterval(async () => {
+                console.log('Auto-syncing schedules...');
+                await loadSchedules();
+            }, 5 * 60 * 1000); // 5분
+        }
+        
+        function stopAutoSync() {
+            if (syncInterval) {
+                clearInterval(syncInterval);
+                syncInterval = null;
             }
         }
 
@@ -1048,17 +1388,8 @@
             
             // 캘린더 업데이트
             if (calendar) {
-                // 기존 이벤트 모두 제거
                 calendar.removeAllEvents();
-                
-                // 새로운 이벤트 추가
-                const events = getCalendarEvents();
-                console.log('Updating calendar with events:', events.length);
-                
-                // addEventSource 대신 개별적으로 추가하여 중복 방지
-                events.forEach(event => {
-                    calendar.addEvent(event);
-                });
+                calendar.addEventSource(getCalendarEvents());
             }
         }
 
@@ -1084,30 +1415,39 @@
             e.preventDefault();
             
             const formData = new FormData(this);
+            const type = formData.get('type');
+            const classNameInput = formData.get('className');
+            
+            // class 타입일 때 className 처리
+            let className = classNameInput;
+            if (type === 'class' && !className) {
+                className = formData.get('title');
+            }
+            
             const schedule = {
                 id: editingEventId || Date.now().toString(),
-                type: formData.get('type'),
+                type: type,
                 title: formData.get('title'),
                 date: formData.get('date'),
                 startTime: formData.get('startTime') || '00:00',
                 endTime: formData.get('endTime') || '23:59',
                 allDay: formData.get('allDay') === 'on',
                 color: formData.get('color'),
-                repeat: formData.get('repeat') === 'on'
+                repeat: formData.get('repeat') === 'on',
+                className: className
             };
 
             // 서버에 저장할 데이터 준비
-            const classNameValue = formData.get('className') || null;
             const planRequest = {
                 title: schedule.title,
                 type: schedule.type,
                 date: schedule.date,
-                startTime: schedule.allDay ? null : schedule.startTime,
-                endTime: schedule.allDay ? null : schedule.endTime,
+                startTime: schedule.allDay ? null : schedule.startTime + ':00', // HH:mm:ss 형식
+                endTime: schedule.allDay ? null : schedule.endTime + ':00',     // HH:mm:ss 형식
                 allDay: schedule.allDay,
                 color: schedule.color,
                 repeat: schedule.repeat,
-                className: classNameValue, // className은 별도 필드로 저장
+                className: schedule.className,
                 description: formData.get('description') || null
             };
 
@@ -1123,40 +1463,82 @@
             try {
                 console.log('Saving schedule:', editingEventId ? 'Update' : 'Create', planRequest);
                 
+                let savedSchedule;
                 if (editingEventId) {
-                    // 기존 일정 업데이트
-                    const response = await API.studyPlans.update(editingEventId, planRequest);
-                    console.log('Update response:', response);
+                    savedSchedule = await API.studyPlans.update(editingEventId, planRequest);
+                    console.log('Update response:', savedSchedule);
                 } else {
-                    // 새 일정 생성
-                    const response = await API.studyPlans.create(planRequest);
-                    console.log('Create response:', response);
-                    if (response && response.id) {
-                        schedule.id = response.id.toString();
-                    }
+                    savedSchedule = await API.studyPlans.create(planRequest);
+                    console.log('Create response:', savedSchedule);
                 }
                 
-                // 성공 시 로컬 업데이트 및 캘린더 새로고침
-                await loadSchedules();
-                console.log('Schedule saved successfully');
+                // 성공 알림
+                showNotification('Schedule added successfully!', 'success');
                 
-                // Show success notification
-                showNotification('Schedule saved successfully!');
+                // 폼 초기화
+                this.reset();
+                editingEventId = null;
+                document.getElementById('repeatOptions').style.display = 'none';
+                document.getElementById('allDayContainer').style.display = 'none';
+                document.getElementById('timeInputs').style.display = 'grid';
+                
+                // 스케줄 새로고침 및 캘린더 업데이트
+                await loadSchedules();
+                
+                // 캘린더가 표시되어 있으면 자동으로 보여주기
+                if (calendar && savedSchedule) {
+                    // 추가된 일정으로 스크롤
+                    calendar.gotoDate(savedSchedule.date);
+                }
                 
             } catch (error) {
                 console.error('Failed to save schedule:', error);
                 console.error('Error details:', error.response || error.message);
-                alert('일정 저장에 실패했습니다. 다시 시도해주세요.\n\n오류: ' + (error.message || 'Unknown error'));
-                return;
+                showNotification('Failed to save schedule: ' + (error.message || 'Unknown error'), 'error');
             }
-
-            // 폼 초기화
-            this.reset();
-            editingEventId = null;
-            document.getElementById('repeatOptions').style.display = 'none';
-            document.getElementById('allDayContainer').style.display = 'none';
-            document.getElementById('timeInputs').style.display = 'grid';
         });
+        
+        // 알림 표시 함수
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 15px 25px;
+                background: ${type === 'success' ? '#4caf50' : '#f44336'};
+                color: white;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                z-index: 10000;
+                animation: slideIn 0.3s ease;
+            `;
+            notification.textContent = message;
+            
+            // Add animation styles if not exists
+            if (!document.getElementById('notification-styles')) {
+                const style = document.createElement('style');
+                style.id = 'notification-styles';
+                style.textContent = `
+                    @keyframes slideIn {
+                        from { transform: translateX(100%); opacity: 0; }
+                        to { transform: translateX(0); opacity: 1; }
+                    }
+                    @keyframes slideOut {
+                        from { transform: translateX(0); opacity: 1; }
+                        to { transform: translateX(100%); opacity: 0; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
 
         function generateRecurringEvents(baseSchedule) {
             const startDate = new Date(baseSchedule.date);
@@ -1391,23 +1773,46 @@
             const schedule = schedules.find(s => s.id === event.id);
             if (!schedule) return;
             
-            const newDate = event.start.toISOString().split('T')[0];
-            const newStartTime = event.start.toTimeString().substr(0, 5);
-            const newEndTime = event.end ? event.end.toTimeString().substr(0, 5) : schedule.endTime;
+            console.log('Updating event:', {
+                eventId: event.id,
+                originalDate: schedule.date,
+                eventStart: event.start,
+                allDay: schedule.allDay
+            });
+            
+            // All Day 이벤트의 경우 로컬 날짜 사용
+            let newDate;
+            if (schedule.allDay || event.allDay) {
+                // All Day 이벤트는 로컬 날짜 형식으로 처리
+                const year = event.start.getFullYear();
+                const month = String(event.start.getMonth() + 1).padStart(2, '0');
+                const day = String(event.start.getDate()).padStart(2, '0');
+                newDate = `${year}-${month}-${day}`;
+                console.log('All Day event - using local date:', newDate);
+            } else {
+                // 시간이 있는 이벤트는 기존 방식 유지
+                newDate = event.start.toISOString().split('T')[0];
+                console.log('Timed event - using ISO date:', newDate);
+            }
+            
+            const newStartTime = event.allDay ? schedule.startTime : event.start.toTimeString().substr(0, 5);
+            const newEndTime = event.allDay ? schedule.endTime : (event.end ? event.end.toTimeString().substr(0, 5) : schedule.endTime);
             
             // 서버에 업데이트 요청
             const updateRequest = {
                 title: schedule.title,
                 type: schedule.type,
                 date: newDate,
-                startTime: schedule.allDay ? null : newStartTime,
-                endTime: schedule.allDay ? null : newEndTime,
+                startTime: schedule.allDay ? null : newStartTime + ':00',
+                endTime: schedule.allDay ? null : newEndTime + ':00',
                 allDay: schedule.allDay,
                 color: schedule.color,
                 repeat: false, // 드래그한 일정은 반복 해제
                 className: schedule.className,
                 description: schedule.description
             };
+            
+            console.log('Update request:', updateRequest);
             
             try {
                 await API.studyPlans.update(event.id, updateRequest);
@@ -1418,6 +1823,7 @@
                 schedule.endTime = newEndTime;
                 
                 saveSchedules();
+                showNotification('일정이 이동되었습니다.', 'success');
             } catch (error) {
                 console.error('Failed to update event:', error);
                 alert('일정 업데이트에 실패했습니다.');
@@ -1582,29 +1988,32 @@
                     todos = JSON.parse(saved);
                     console.log('Loaded TODOs:', todos);
                     
-                    // Remove existing TODO events from schedules first
-                    schedules = schedules.filter(s => !s.isTodo);
-                    
-                    // Sync TODO calendar events (only uncompleted ones)
+                    // Sync TODO calendar events
                     todos.forEach(todo => {
-                        if (todo.dueDate && !todo.completed) {
-                            // Add to schedules
-                            const schedule = {
-                                id: 'todo-' + todo.id,
-                                type: 'study',
-                                title: 'TODO: ' + todo.text,
-                                date: todo.dueDate,
-                                startTime: todo.dueTime || '09:00',
-                                endTime: todo.dueTime ? 
-                                    (parseInt(todo.dueTime.split(':')[0]) + 1).toString().padStart(2, '0') + ':00' : 
-                                    '10:00',
-                                allDay: !todo.dueTime,
-                                color: todo.priority === 'high' ? '#f44336' : 
-                                       todo.priority === 'medium' ? '#ff9800' : '#4caf50',
-                                className: 'TODO List',
-                                isTodo: true
-                            };
-                            schedules.push(schedule);
+                        if (todo.dueDate) {
+                            // Check if this TODO is already in schedules
+                            const todoScheduleId = 'todo-' + todo.id;
+                            const existingSchedule = schedules.find(s => s.id === todoScheduleId);
+                            
+                            if (!existingSchedule) {
+                                // Add to schedules if not exists
+                                const schedule = {
+                                    id: todoScheduleId,
+                                    type: 'study',
+                                    title: 'TODO: ' + todo.text,
+                                    date: todo.dueDate,
+                                    startTime: todo.dueTime || '09:00',
+                                    endTime: todo.dueTime ? 
+                                        (parseInt(todo.dueTime.split(':')[0]) + 1).toString().padStart(2, '0') + ':00' : 
+                                        '10:00',
+                                    allDay: !todo.dueTime,
+                                    color: todo.priority === 'high' ? '#f44336' : 
+                                           todo.priority === 'medium' ? '#ff9800' : '#4caf50',
+                                    className: 'TODO List',
+                                    isTodo: true
+                                };
+                                schedules.push(schedule);
+                            }
                         }
                     });
                     
@@ -1826,17 +2235,6 @@
                 todo.completedAt = todo.completed ? new Date().toISOString() : null;
                 saveTodos();
                 renderTodos();
-                
-                // Update calendar visibility
-                const todoScheduleId = 'todo-' + id;
-                if (todo.completed) {
-                    // Remove from calendar when completed
-                    schedules = schedules.filter(s => s.id !== todoScheduleId);
-                    saveSchedules();
-                } else if (todo.dueDate) {
-                    // Add back to calendar when uncompleted
-                    addTodoToCalendar(todo);
-                }
             }
         }
         
@@ -1850,14 +2248,6 @@
                 todo.updatedAt = new Date().toISOString();
                 saveTodos();
                 renderTodos();
-                
-                // Update calendar event if it exists
-                const todoScheduleId = 'todo-' + id;
-                const schedule = schedules.find(s => s.id === todoScheduleId);
-                if (schedule) {
-                    schedule.title = 'TODO: ' + todo.text;
-                    saveSchedules();
-                }
             }
         }
         
@@ -1865,20 +2255,6 @@
             if (confirm('Are you sure you want to delete this task?')) {
                 todos = todos.filter(t => t.id !== id);
                 saveTodos();
-                
-                // Remove from schedules and calendar
-                const todoScheduleId = 'todo-' + id;
-                schedules = schedules.filter(s => s.id !== todoScheduleId);
-                saveSchedules();
-                
-                // Remove from calendar immediately
-                if (calendar) {
-                    const event = calendar.getEventById(todoScheduleId);
-                    if (event) {
-                        event.remove();
-                    }
-                }
-                
                 renderTodos();
             }
         }
@@ -1887,32 +2263,71 @@
             const dueDate = todo.dueDate || new Date().toISOString().split('T')[0];
             const todoScheduleId = 'todo-' + todo.id;
             
-            // Check if already exists
-            const existingSchedule = schedules.find(s => s.id === todoScheduleId);
-            if (existingSchedule) {
-                console.log('TODO already in calendar:', todoScheduleId);
-                return;
+            // 중복 체크 추가
+            const existingIndex = schedules.findIndex(s => s.id === todoScheduleId);
+            if (existingIndex !== -1) {
+                // 기존 일정 업데이트
+                schedules[existingIndex] = {
+                    id: todoScheduleId,
+                    type: 'study',
+                    title: 'TODO: ' + todo.text,
+                    date: dueDate,
+                    startTime: todo.dueTime || '09:00',
+                    endTime: todo.dueTime ? 
+                        (parseInt(todo.dueTime.split(':')[0]) + 1).toString().padStart(2, '0') + ':00' : 
+                        '10:00',
+                    allDay: !todo.dueTime,
+                    color: todo.priority === 'high' ? '#f44336' : 
+                           todo.priority === 'medium' ? '#ff9800' : '#4caf50',
+                    className: 'TODO List',
+                    isTodo: true
+                };
+            } else {
+                // 새 일정 추가
+                const schedule = {
+                    id: todoScheduleId,
+                    type: 'study',
+                    title: 'TODO: ' + todo.text,
+                    date: dueDate,
+                    startTime: todo.dueTime || '09:00',
+                    endTime: todo.dueTime ? 
+                        (parseInt(todo.dueTime.split(':')[0]) + 1).toString().padStart(2, '0') + ':00' : 
+                        '10:00',
+                    allDay: !todo.dueTime,
+                    color: todo.priority === 'high' ? '#f44336' : 
+                           todo.priority === 'medium' ? '#ff9800' : '#4caf50',
+                    className: 'TODO List',
+                    isTodo: true
+                };
+                schedules.push(schedule);
             }
             
-            const schedule = {
-                id: todoScheduleId,
-                type: 'study',
-                title: 'TODO: ' + todo.text,
-                date: dueDate,
-                startTime: todo.dueTime || '09:00',
-                endTime: todo.dueTime ? 
-                    (parseInt(todo.dueTime.split(':')[0]) + 1).toString().padStart(2, '0') + ':00' : 
-                    '10:00',
-                allDay: !todo.dueTime,
-                color: todo.priority === 'high' ? '#f44336' : 
-                       todo.priority === 'medium' ? '#ff9800' : '#4caf50',
-                className: 'TODO List',
-                isTodo: true
-            };
-            
             // 로컬 스케줄에 추가
-            schedules.push(schedule);
             saveSchedules();
+            
+            // 캘린더에 즉시 반영
+            if (calendar) {
+                // 기존 TODO 이벤트 제거
+                const existingEvent = calendar.getEventById(todoScheduleId);
+                if (existingEvent) {
+                    existingEvent.remove();
+                }
+                
+                // 새 이벤트 추가
+                const newSchedule = schedules.find(s => s.id === todoScheduleId);
+                if (newSchedule) {
+                    calendar.addEvent({
+                        id: newSchedule.id,
+                        title: newSchedule.title,
+                        start: newSchedule.allDay ? newSchedule.date : newSchedule.date + 'T' + newSchedule.startTime,
+                        end: newSchedule.allDay ? null : newSchedule.date + 'T' + newSchedule.endTime,
+                        allDay: newSchedule.allDay,
+                        backgroundColor: newSchedule.color,
+                        borderColor: newSchedule.color,
+                        extendedProps: newSchedule
+                    });
+                }
+            }
         }
         
         // Add Enter key support for TODO input

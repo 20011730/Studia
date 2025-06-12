@@ -8,100 +8,10 @@
     <link rel="stylesheet" href="css/fontawesome-all.min.css" />
     <link rel="stylesheet" href="css/responsive.css" />
     <link rel="stylesheet" href="css/sidebar-fixed.css" />
-    <link rel="stylesheet" href="css/dark-mode.css" />
-    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css' rel='stylesheet' />
+		<link rel="stylesheet" href="css/menu-toggle.css" />    <link rel="stylesheet" href="css/dark-mode.css" />
+		<link rel="stylesheet" href="css/main-responsive.css" />    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css' rel='stylesheet' />
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js'></script>
     <style>
-        /* Menu Toggle Button Styling - Modern Design */
-        .menu-toggle-btn {
-            position: fixed !important;
-            top: 20px !important;
-            left: 20px !important;
-            background: #f56a6a;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(245, 106, 106, 0.3);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            width: 40px !important;
-            height: 40px !important;
-            line-height: 40px !important;
-            text-align: center;
-            z-index: 10001;
-            display: flex !important;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            visibility: visible !important;
-            opacity: 1 !important;
-            border: none;
-            color: white;
-            font-size: 1.2rem;
-            padding: 0;
-        }
-        
-        .menu-toggle-btn:hover {
-            background: #f45858;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(245, 106, 106, 0.4);
-        }
-        
-        .menu-toggle-btn:active {
-            transform: translateY(0);
-        }
-        
-        /* Toggle button icon animation */
-        .menu-toggle-btn i {
-            transition: all 0.3s ease;
-            width: 20px;
-            height: 20px;
-            position: relative;
-            display: block;
-        }
-        
-        .menu-toggle-btn i::before,
-        .menu-toggle-btn i::after,
-        .menu-toggle-btn span {
-            content: '';
-            position: absolute;
-            background-color: white;
-            transition: all 0.3s ease;
-        }
-        
-        .menu-toggle-btn i::before {
-            left: 0;
-            top: -6px;
-            width: 20px;
-            height: 2px;
-        }
-        
-        .menu-toggle-btn span {
-            left: 0;
-            top: 0;
-            width: 20px;
-            height: 2px;
-        }
-        
-        .menu-toggle-btn i::after {
-            left: 0;
-            top: 6px;
-            width: 20px;
-            height: 2px;
-        }
-        
-        /* Toggle button when sidebar is active */
-        body:not(.sidebar-inactive) .menu-toggle-btn i::before {
-            transform: rotate(45deg);
-            top: 0;
-        }
-        
-        body:not(.sidebar-inactive) .menu-toggle-btn span {
-            opacity: 0;
-        }
-        
-        body:not(.sidebar-inactive) .menu-toggle-btn i::after {
-            transform: rotate(-45deg);
-            top: 0;
-        }
-        
         .schedule-form-container {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 15px;
@@ -178,6 +88,7 @@
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             margin-bottom: 30px;
+            min-height: 600px; /* 최소 높이 추가 */
         }
         .fc-event {
             cursor: pointer;
@@ -385,7 +296,7 @@
             border-radius: 5px;
             transition: all 0.3s;
         }
-    </style>
+</style>
 </head>
 <body class="is-preload">
     <!-- Menu Toggle Button -->
@@ -663,23 +574,17 @@
     <script src="js/util.js"></script>
     <script src="js/main.js"></script>
     <script src="assets/js/api.js"></script>
-    <script src="js/sidebar-toggle.js"></script>
+    <script src="js/sidebar-toggle-global.js"></script>
     <script src="js/dark-mode.js"></script>
     <script src="js/sidebar-state.js"></script>
     <script src="js/modal-manager.js"></script>
     <script>
         // Toggle Sidebar Function
         function toggleSidebar() {
+            document.body.classList.toggle('sidebar-inactive');
             const sidebar = document.getElementById('sidebar');
-            const main = document.getElementById('main');
-            const toggleBtn = document.querySelector('.menu-toggle-btn');
-            
-            sidebar.classList.toggle('inactive');
-            
-            if (sidebar.classList.contains('inactive')) {
-                document.body.classList.add('sidebar-inactive');
-            } else {
-                document.body.classList.remove('sidebar-inactive');
+            if (sidebar) {
+                sidebar.classList.toggle('inactive');
             }
         }
         
@@ -700,6 +605,20 @@
         // Initialize calendar
         document.addEventListener('DOMContentLoaded', async function() {
             console.log('Initializing Study Plan page...');
+            
+            // FullCalendar 라이브러리 로드 확인
+            if (typeof FullCalendar === 'undefined') {
+                console.error('FullCalendar library not loaded!');
+                document.getElementById('calendar').innerHTML = `
+                    <div style="text-align: center; padding: 40px; background: #ffebee; border-radius: 10px;">
+                        <i class="fas fa-exclamation-circle" style="font-size: 3em; color: #f44336; margin-bottom: 20px;"></i>
+                        <h3>Calendar Library Error</h3>
+                        <p>FullCalendar library failed to load. Please check your internet connection.</p>
+                        <button class="button primary" onclick="location.reload()">Refresh Page</button>
+                    </div>
+                `;
+                return;
+            }
             
             // Set initial sidebar state - always start closed
             const sidebar = document.getElementById('sidebar');
@@ -877,6 +796,9 @@
             }
             
             try {
+                // 캘린더 초기화 전 로그
+                console.log('Initializing calendar with events:', getCalendarEvents());
+                
                 calendar = new FullCalendar.Calendar(calendarEl, {
                     initialView: 'dayGridMonth',
                     timeZone: 'local', // 로컬 시간대 사용
@@ -915,6 +837,17 @@
                 });
                 calendar.render();
                 console.log('Calendar rendered successfully');
+                
+                // 캘린더가 비어있으면 안내 메시지 표시
+                if (getCalendarEvents().length === 0) {
+                    calendarEl.innerHTML += `
+                        <div style="text-align: center; padding: 40px; color: #999;">
+                            <i class="fas fa-calendar-plus" style="font-size: 3em; margin-bottom: 20px;"></i>
+                            <h3>No schedules yet</h3>
+                            <p>Add your first schedule using the form above!</p>
+                        </div>
+                    `;
+                }
             } catch (error) {
                 console.error('Error initializing calendar:', error);
                 // Show user-friendly error message
@@ -922,7 +855,8 @@
                     <div style="text-align: center; padding: 40px; background: #f9f9f9; border-radius: 10px;">
                         <i class="fas fa-exclamation-triangle" style="font-size: 3em; color: #f44336; margin-bottom: 20px;"></i>
                         <h3>Calendar loading error</h3>
-                        <p>Please refresh the page or try again later.</p>
+                        <p>Error details: ${error.message}</p>
+                        <p>Please check console for more details.</p>
                         <button class="button primary" onclick="location.reload()">Refresh Page</button>
                     </div>
                 `;

@@ -90,26 +90,8 @@
 				$('<style>#sidebar .inner::-webkit-scrollbar { display: none; }</style>')
 					.appendTo($head);
 
-		// Toggle.
-			$('<a href="#sidebar" class="toggle">Toggle</a>')
-				.appendTo($sidebar)
-				.on('click', function(event) {
-
-					// Prevent default.
-						event.preventDefault();
-						event.stopPropagation();
-
-					// Toggle.
-						$sidebar.toggleClass('inactive');
-						
-					// Toggle body class for main content animation
-						if ($sidebar.hasClass('inactive')) {
-							$body.addClass('sidebar-inactive');
-						} else {
-							$body.removeClass('sidebar-inactive');
-						}
-
-				});
+		// Toggle button functionality is now handled in HTML
+		// Removed automatic toggle creation
 
 		// Events.
 
