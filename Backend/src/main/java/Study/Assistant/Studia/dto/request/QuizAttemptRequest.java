@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -15,6 +16,7 @@ public class QuizAttemptRequest {
     private List<Answer> answers;
     
     private Long totalTimeSpent; // 전체 풀이 시간 (초)
+    private LocalDateTime startedAt; // 퀴즈 시작 시간
     
     @Data
     @NoArgsConstructor

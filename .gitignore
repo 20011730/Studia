@@ -49,3 +49,8 @@ heroku-deploy.sh
 
 # 빌드 결과 절대 추적하지 않기
 Backend/build/libs/
+
+*.md
+*.gz
+*.sh
+*.conf

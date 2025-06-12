@@ -116,6 +116,15 @@ public class QuizController {
     }
     
     /**
+     * 퀴즈 시도 기록 조회 (세션 단위로 그룹화)
+     */
+    @GetMapping("/materials/{materialId}/history")
+    public ResponseEntity<List<QuizHistoryResponse>> getQuizHistory(@PathVariable Long materialId) {
+        List<QuizHistoryResponse> history = quizService.getQuizHistory(materialId);
+        return ResponseEntity.ok(history);
+    }
+    
+    /**
      * 학습 통계 조회
      */
     @GetMapping("/statistics")

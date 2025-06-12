@@ -220,6 +220,14 @@ public class QuizService {
         int correctCount = 0;
         List<QuizAttempt> attempts = new ArrayList<>();
         
+        // 시작 시간 설정 (전달받지 않은 경우 현재 시간에서 totalTimeSpent를 뺀 시간)
+        LocalDateTime attemptTime = request.getStartedAt() != null ? 
+                request.getStartedAt() : 
+                LocalDateTime.now().minusSeconds(request.getTotalTimeSpent() != null ? request.getTotalTimeSpent() : 0);
+        
+        // 전체 소요 시간 (초 단위)
+        int totalDuration = request.getTotalTimeSpent() != null ? request.getTotalTimeSpent().intValue() : 0;
+        
         // 각 답변 처리
         for (QuizAttemptRequest.Answer answer : request.getAnswers()) {
             Quiz quiz = quizzes.stream()
@@ -239,14 +247,15 @@ public class QuizService {
             }
             totalScore += score;
             
-            // 시도 기록 저장
+            // 시도 기록 저장 (duration 포함)
             QuizAttempt attempt = QuizAttempt.builder()
                     .quiz(quiz)
                     .user(user)
                     .userAnswer(userAnswer)
                     .isCorrect(isCorrect)
                     .score(score)
-                    .attemptedAt(LocalDateTime.now())
+                    .attemptedAt(attemptTime)
+                    .duration(totalDuration) // 전체 소요 시간 저장
                     .build();
             
             attempts.add(attempt);
@@ -473,8 +482,14 @@ public class QuizService {
         int score = (int) attempts.stream().filter(QuizAttempt::getIsCorrect).count();
         int total = attempts.size();
         
-        // 임시로 duration 계산 (실제로는 시작/종료 시간 저장 필요)
-        int duration = 120 * total; // 문제당 2분 가정
+        // 실제 소요 시간 계산
+        // 첫 번째 시도에 저장된 duration 사용
+        int duration = attempts.get(0).getDuration() != null ? attempts.get(0).getDuration() : 0;
+        
+        // duration이 없으면 추정 (문제당 120초)
+        if (duration == 0) {
+            duration = total * 120; // 문제당 2분 추정
+        }
         
         return QuizAttemptDetailResponse.builder()
                 .attemptId(attempts.get(0).getId())
@@ -487,6 +502,45 @@ public class QuizService {
                 .percentage((double) score / total * 100)
                 .questionAttempts(questionDetails)
                 .build();
+    }
+    
+    /**
+     * 퀴즈 히스토리 조회 (세션 단위로 그룹화)
+     */
+    public List<QuizHistoryResponse> getQuizHistory(Long materialId) {
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        
+        // 해당 material의 모든 시도 가져오기
+        List<QuizAttempt> attempts = quizAttemptRepository
+                .findByUserIdAndQuiz_StudyMaterial_Id(user.getId(), materialId);
+        
+        // 시도를 세션별로 그룹화
+        List<List<QuizAttempt>> sessions = groupAttemptsBySession(attempts);
+        
+        // 각 세션을 QuizHistoryResponse로 변환
+        return sessions.stream()
+                .map(session -> {
+                    int score = (int) session.stream().filter(QuizAttempt::getIsCorrect).count();
+                    int total = session.size();
+                    double percentage = (double) score / total * 100;
+                    
+                    // 세션의 첫 번째 시도에서 정보 가져오기
+                    QuizAttempt firstAttempt = session.get(0);
+                    
+                    return QuizHistoryResponse.builder()
+                            .attemptId(firstAttempt.getId())
+                            .attemptedAt(firstAttempt.getAttemptedAt())
+                            .score(score)
+                            .totalQuestions(total)
+                            .percentage(percentage)
+                            .duration(firstAttempt.getDuration() != null ? firstAttempt.getDuration() : 0)
+                            .materialTitle(firstAttempt.getQuiz().getStudyMaterial().getTitle())
+                            .build();
+                })
+                .sorted((a, b) -> b.getAttemptedAt().compareTo(a.getAttemptedAt())) // 최신순 정렬
+                .collect(Collectors.toList());
     }
     
     /**

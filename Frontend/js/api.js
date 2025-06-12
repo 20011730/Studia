@@ -576,6 +576,12 @@ const API = {
             }
         },
         
+        getHistory: async (materialId) => {
+            const response = await apiClient.get(`/quizzes/materials/${materialId}/history`);
+            if (!response.ok) throw new Error('Failed to fetch quiz history');
+            return await response.json();
+        },
+        
         getAttemptDetail: async (attemptId) => {
             const response = await apiClient.get(`/quizzes/attempts/${attemptId}`);
             if (!response.ok) throw new Error('Failed to fetch attempt detail');
@@ -627,8 +633,8 @@ const API = {
             return data;
         },
         
-        submitAttempt: async (quizId, answers) => {
-            const response = await apiClient.post(`/quizzes/${quizId}/attempts`, { answers });
+        submitAttempt: async (quizId, attemptData) => {
+            const response = await apiClient.post(`/quizzes/${quizId}/attempts`, attemptData);
             if (!response.ok) throw new Error('Failed to submit quiz');
             // Clear quiz list cache after submission
             cache.delete('quizzes_list');

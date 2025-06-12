@@ -28,6 +28,9 @@ public class QuizAttempt {
     
     private Integer score;
     
+    @Column(name = "duration_seconds")
+    private Integer duration; // 소요 시간 (초 단위)
+    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "quiz_id")
     private Quiz quiz;
