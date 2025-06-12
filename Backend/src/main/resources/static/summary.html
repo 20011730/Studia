@@ -12,7 +12,6 @@
 		<link rel="stylesheet" href="css/header-unified-v2.css" />
 		<link rel="stylesheet" href="css/main-responsive.css" />
 		<link rel="stylesheet" href="css/dark-mode.css" />
-		<link rel="stylesheet" href="/static/css/header-override.css">
 		<style>
 			/* Modern Card Design */
 			.material-card {
@@ -247,7 +246,7 @@
                         <strong style="font-size: 2em;">Studia</strong>
                     </a>
                     <ul class="icons header-user-info">
-                        <li>
+                        <li><span id="userWelcome">Welcome!</span></li>
                         <li><a href="#" onclick="logout()" class="button small logout-btn">Logout</a></li>
                     </ul>
                 </header>
@@ -342,7 +341,7 @@
 		<script src="js/main.js"></script>
 		<!-- API script must be loaded first -->
 		<script src="js/api.js"></script>
-		<script src="/static/js/header-username.js"></script>
+		<script src="js/header-username.js"></script>
 		<script src="js/sidebar-toggle-global.js"></script>
 		<script src="js/sidebar-state.js"></script>
 		<script src="js/dark-mode.js"></script>
@@ -383,16 +382,12 @@
 			}
 
 			function updateHeader() {
-                const username = TokenManager.getUsername();
-                const userWelcome = document.getElementById('userWelcome');
-                if (userWelcome) {
-                    userWelcome.textContent = `Welcome, ${username || 'User'}!`;
-                    userWelcome.setAttribute('data-username', username || 'User');
-                }
-            }!`;
-            }!</span></li>
-					<li><button class="button" onclick="logout()">Log Out</button></li>
-				`;
+				const username = TokenManager.getUsername();
+				const userWelcome = document.getElementById('userWelcome');
+				if (userWelcome) {
+					userWelcome.textContent = `Welcome, ${username || 'User'}!`;
+					userWelcome.setAttribute('data-username', username || 'User');
+				}
 			}
 
 			function logout() {

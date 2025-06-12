@@ -9,10 +9,9 @@
 		<link rel="stylesheet" href="css/responsive.css" />
 		<link rel="stylesheet" href="css/sidebar-fixed.css" />
 		<link rel="stylesheet" href="css/menu-toggle.css" />
-		<link rel="stylesheet" href="css/header-unified-v2.css" />
+		<link rel="stylesheet" href="css/header-final.css?v=1749757770" />
 		<link rel="stylesheet" href="css/main-responsive.css" />
 		<link rel="stylesheet" href="css/dark-mode.css" />
-		<link rel="stylesheet" href="/static/css/header-override.css">
 		<style>
 			/* Modern Card Design */
 			.material-card {
@@ -342,7 +341,7 @@
 		<script src="js/main.js"></script>
 		<!-- API script must be loaded first -->
 		<script src="js/api.js"></script>
-		<script src="/static/js/header-username.js"></script>
+		<script src="js/header-username.js"></script>
 		<script src="js/sidebar-toggle-global.js"></script>
 		<script src="js/sidebar-state.js"></script>
 		<script src="js/dark-mode.js"></script>
@@ -387,10 +386,7 @@
                 const userWelcome = document.getElementById('userWelcome');
                 userWelcome.textContent = `Welcome, ${username || 'User'}!`;
                 userWelcome.setAttribute('data-username', username || 'User');
-            }!</span></li>
-					<li><button class="button" onclick="logout()">Log Out</button></li>
-				`;
-			}
+            }
 
 			function logout() {
 				API.auth.logout();

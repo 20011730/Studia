@@ -9,9 +9,10 @@
     <link rel="stylesheet" href="css/responsive.css" />
     <link rel="stylesheet" href="css/sidebar-fixed.css" />
 		<link rel="stylesheet" href="css/menu-toggle.css" />
-		<link rel="stylesheet" href="css/header-unified-v2.css" />    <link rel="stylesheet" href="css/dark-mode.css" />
-		<link rel="stylesheet" href="/static/css/header-override.css">
-		<link rel="stylesheet" href="css/main-responsive.css" />    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+		<link rel="stylesheet" href="css/header-final.css?v=1749757770" />
+		<link rel="stylesheet" href="css/main-responsive.css" />
+    <link rel="stylesheet" href="css/dark-mode.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         .dashboard-grid {
             display: grid;
@@ -199,7 +200,7 @@
         <!-- Main -->
         <div id="main">
             <div class="inner">
-                                <!-- Header -->
+                <!-- Header -->
                 <header id="header">
                     <a href="index.html" class="logo">
                         <strong style="font-size: 2em;">Studia</strong>
@@ -337,32 +338,16 @@
     <script src="js/breakpoints.min.js"></script>
     <script src="js/util.js"></script>
     <script src="js/main.js"></script>
-    <script src="assets/js/api.js"></script>
-		<script src="/static/js/header-username.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/header-username.js"></script>
     <script src="js/sidebar-toggle-global.js"></script>
     <script src="js/dark-mode.js"></script>
     <script src="js/sidebar-state.js"></script>
     <script>
-        // Toggle Sidebar Function
-        function toggleSidebar() {
-            document.body.classList.toggle('sidebar-inactive');
-            const sidebar = document.getElementById('sidebar');
-            if (sidebar) {
-                sidebar.classList.toggle('inactive');
-            }
-        }
-        
         // Check authentication
         if (!checkAuth()) {
             window.location.href = 'index.html';
         }
-        
-        // Set initial sidebar state - always start closed
-        document.addEventListener('DOMContentLoaded', function() {
-            const sidebar = document.getElementById('sidebar');
-            sidebar.classList.add('inactive');
-            document.body.classList.add('sidebar-inactive');
-        });
 
         // Update welcome message
         function updateHeader() {
@@ -584,5 +569,5 @@
         // Load dashboard on page load
         loadDashboard();
     </script>
-</body>
+	</body>
 </html>

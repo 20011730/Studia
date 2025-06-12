@@ -12,7 +12,6 @@
 		<link rel="stylesheet" href="css/header-unified-v2.css" />
 		<link rel="stylesheet" href="css/main-responsive.css" />
 		<link rel="stylesheet" href="css/dark-mode.css" />
-		<link rel="stylesheet" href="/static/css/header-override.css">
 		<style>
 			/* Modern Quiz Container */
 			.quiz-container {
@@ -338,6 +337,7 @@
                         <strong style="font-size: 2em;">Studia</strong>
                     </a>
                     <ul class="icons header-user-info">
+                        <li><span id="userWelcome">Welcome!</span></li>
                         <li><a href="#" onclick="logout()" class="button small logout-btn">Logout</a></li>
                     </ul>
                 </header>
@@ -473,7 +473,7 @@
 		<script src="js/util.js"></script>
 		<script src="js/main.js"></script>
 		<script src="js/api.js"></script>
-		<script src="/static/js/header-username.js"></script>
+		<script src="js/header-username.js"></script>
 		<script src="js/sidebar-toggle-global.js"></script>
 		<script src="js/dark-mode.js"></script>
 		<script src="js/sidebar-state.js"></script>
@@ -513,16 +513,12 @@
 			});
 
 			function updateHeader() {
-                const username = TokenManager.getUsername();
-                const userWelcome = document.getElementById('userWelcome');
-                if (userWelcome) {
-                    userWelcome.textContent = `Welcome, ${username || 'User'}!`;
-                    userWelcome.setAttribute('data-username', username || 'User');
-                }
-            }!`;
-            }!</span></li>
-					<li><button class="button" onclick="logout()">Log Out</button></li>
-				`;
+				const username = TokenManager.getUsername();
+				const userWelcome = document.getElementById('userWelcome');
+				if (userWelcome) {
+					userWelcome.textContent = `Welcome, ${username || 'User'}!`;
+					userWelcome.setAttribute('data-username', username || 'User');
+				}
 			}
 
 			function logout() {
@@ -953,7 +949,27 @@
 			}
 
 			function backToQuizzes() {
-				window.location.reload();
+				// 페이지 새로고침 대신 퀴즈 목록 다시 표시
+				document.getElementById('quizContainer').style.display = 'none';
+				document.getElementById('resultsContainer').style.display = 'none';
+				document.getElementById('wrongAnswersContainer').style.display = 'none';
+				document.getElementById('quizSelection').style.display = 'block';
+				
+				// 타이머 정리
+				if (timerInterval) {
+					clearInterval(timerInterval);
+				}
+				if (timeLimitInterval) {
+					clearInterval(timeLimitInterval);
+				}
+				
+				// 상태 초기화
+				currentQuiz = null;
+				currentQuestionIndex = 0;
+				userAnswers = {};
+				
+				// 퀴즈 목록 다시 로드
+				loadQuizzes();
 			}
 			
 			// 이전 시도 보기 함수

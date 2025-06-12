@@ -56,65 +56,35 @@ public class AIService {
     }
     
     public String generateSummary(String content) {
+        // 컨텐츠 길이 제한 없음 - 전체 내용 사용
+        String contentToSummarize = content;
+        
+        // 경고만 표시
+        if (content.length() > 10000) {
+            log.warn("Large content for summary: {} chars. This may take longer to process.", content.length());
+        }
+            
         String prompt = """
-            당신은 대학생들의 학습을 돕는 전문 AI 튜터입니다.
-            다음 학습 자료를 대학생이 이해하기 쉽도록 체계적으로 요약해주세요.
+            대학생을 위한 학습 자료 요약을 작성해주세요.
             
-            요약 가이드라인:
-            1. 핵심 개념과 주요 아이디어를 명확히 구분하여 설명
-            2. 중요한 용어나 정의는 **볼드체**로 강조
-            3. 복잡한 개념은 구체적이고 실용적인 예시를 들어 설명
-            4. 논리적 흐름을 따라 체계적으로 구성
-            5. 학습에 도움이 되는 추가 통찰력과 연관 개념 제공
-            6. 시험에 자주 출제되는 부분은 특별히 강조
-            7. 개념 간의 관계와 차이점을 명확히 설명
-            
-            형식:
+            요약 형식:
             ## 📚 핵심 개념 요약
             
-            ### 🎯 학습 목표
-            이 자료를 통해 이해해야 할 핵심 목표 3-4개를 명확히 제시
+            ### 주요 내용
+            - 이 자료의 핵심 주제와 개념을 3-5개 항목으로 정리
+            - 각 항목은 간결하고 명확하게 설명
             
-            ### 1. 핵심 개념 정리
-            **[개념명]**: 정의와 중요성
-            - 상세 설명
-            - 실제 예시
-            - 관련 개념과의 연결
+            ### 중요 포인트
+            - 시험에 나올 만한 중요한 내용 3-4개
+            - **굵은 글씨**로 핵심 용어 강조
             
-            ### 2. 세부 내용 분석
-            #### 2.1 [주제1]
-            - 핵심 내용
-            - 구체적 설명
-            - 실습/응용 방법
-            
-            #### 2.2 [주제2]
-            - 핵심 내용
-            - 구체적 설명
-            - 주의사항
-            
-            ### 3. 핵심 포인트 정리
-            ✅ **중요 포인트 1**: 설명
-            ✅ **중요 포인트 2**: 설명
-            ✅ **중요 포인트 3**: 설명
-            
-            ### 4. 🔍 자주 출제되는 부분
-            - **개념 A vs 개념 B 비교**: 차이점과 공통점
-            - **계산/적용 문제**: 어떤 유형이 나오는지
-            - **서술형 예상 문제**: 어떤 설명을 요구하는지
-            
-            ### 5. 💡 학습 전략
-            1. **이해 단계**: 어떻게 접근할지
-            2. **암기 팁**: 효율적인 암기 방법
-            3. **복습 방법**: 장기 기억을 위한 전략
-            
-            ### 6. 🔗 연관 학습 자료
-            - 이전에 배운 내용과의 연결
-            - 다음에 배울 내용과의 관계
-            - 추가 학습이 필요한 부분
+            ### 학습 도움말
+            - 이 내용을 공부할 때 유용한 팁 2-3개
+            - 관련 개념이나 추가 학습이 필요한 부분
             
             내용:
             %s
-            """.formatted(content);
+            """.formatted(contentToSummarize);
         
         return callAI(prompt, "summary");
     }
@@ -154,6 +124,14 @@ public class AIService {
     public List<Map<String, Object>> generateQuizzes(String content, int count, String difficulty) {
         log.info("=== Starting quiz generation ===");
         log.info("Count: {}, Difficulty: {}, Content length: {} chars", count, difficulty, content.length());
+        
+        // 컨텐츠 길이 제한 없음 - 전체 내용 사용
+        String contentForQuiz = content;
+        
+        // 경고만 표시
+        if (content.length() > 10000) {
+            log.warn("Large content detected: {} chars. This may take longer to process.", content.length());
+        }
         
         String prompt = """
             당신은 대학 교수로서 고품질의 평가 문제를 만드는 전문가입니다.
@@ -211,7 +189,7 @@ public class AIService {
             
             내용:
             %s
-            """.formatted(count, difficulty, difficulty, content);
+            """.formatted(count, difficulty, difficulty, contentForQuiz);
         
         log.info("Calling AI to generate quiz questions...");
         String response = callAI(prompt, "quiz-generation");
@@ -393,7 +371,7 @@ public class AIService {
                         Map.of("role", "user", "content", prompt)
                 ),
                 "temperature", 0.7,
-                "max_tokens", 2000,
+                "max_tokens", 4000,
                 "top_p", 0.9,
                 "frequency_penalty", 0.2,
                 "presence_penalty", 0.1
@@ -401,10 +379,13 @@ public class AIService {
         
         try {
             log.info("Sending request to OpenAI API...");
+            log.debug("Request body: {}", objectMapper.writeValueAsString(requestBody));
+            
             String response = webClient.post()
                     .bodyValue(requestBody)
                     .retrieve()
                     .bodyToMono(String.class)
+                    .timeout(java.time.Duration.ofSeconds(30))
                     .block();
             
             log.info("OpenAI API response received successfully");
