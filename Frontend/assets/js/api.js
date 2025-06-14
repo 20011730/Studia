@@ -546,14 +546,51 @@ const API = {
     
     quiz: {
         attempt: async (quizId, answers) => {
-            const response = await apiClient.post(`/quiz/${quizId}/attempt`, { answers });
+            const response = await apiClient.post(`/quizzes/${quizId}/attempts`, { answers });
             if (!response.ok) throw new Error('Failed to submit quiz');
             return await response.json();
         },
         
         getHistory: async () => {
-            const response = await apiClient.get('/quiz/history');
+            try {
+                // 모든 퀴즈 가져오기
+                const quizzes = await API.quizzes.list();
+                
+                // 각 퀴즈의 시도 기록을 수집
+                const history = [];
+                for (const quiz of quizzes) {
+                    if (quiz.attempts && quiz.attempts > 0) {
+                        history.push({
+                            quizId: quiz.id,
+                            materialTitle: quiz.material?.title || quiz.title,
+                            attempts: quiz.attempts,
+                            // 추가 정보가 필요하면 여기에 추가
+                        });
+                    }
+                }
+                
+                return history;
+            } catch (error) {
+                console.error('Failed to fetch quiz history:', error);
+                return [];
+            }
+        },
+        
+        getHistory: async (materialId) => {
+            const response = await apiClient.get(`/quizzes/materials/${materialId}/history`);
             if (!response.ok) throw new Error('Failed to fetch quiz history');
+            return await response.json();
+        },
+        
+        getAttemptDetail: async (attemptId) => {
+            const response = await apiClient.get(`/quizzes/attempts/${attemptId}`);
+            if (!response.ok) throw new Error('Failed to fetch attempt detail');
+            return await response.json();
+        },
+        
+        getLastAttempt: async (materialId) => {
+            const response = await apiClient.get(`/quizzes/materials/${materialId}/last-attempt`);
+            if (!response.ok) throw new Error('Failed to fetch last attempt');
             return await response.json();
         }
     },
@@ -566,11 +603,21 @@ const API = {
                 if (cached) return cached;
             }
             
-            const response = await apiClient.get('/quizzes');
-            if (!response.ok) throw new Error('Failed to fetch quizzes');
-            const data = await response.json();
-            setCache(cacheKey, data);
-            return data;
+            try {
+                const response = await apiClient.get('/quizzes');
+                if (!response.ok) throw new Error('Failed to fetch quizzes');
+                const data = await response.json();
+                setCache(cacheKey, data);
+                return data;
+            } catch (error) {
+                // If error occurs, try to return cached data if available
+                const cached = cache.get(cacheKey);
+                if (cached && cached.data) {
+                    console.log('Returning cached data due to error:', error);
+                    return cached.data;
+                }
+                throw error;
+            }
         },
         
         get: async (id) => {
@@ -586,8 +633,8 @@ const API = {
             return data;
         },
         
-        submitAttempt: async (quizId, answers) => {
-            const response = await apiClient.post(`/quizzes/${quizId}/attempts`, { answers });
+        submitAttempt: async (quizId, attemptData) => {
+            const response = await apiClient.post(`/quizzes/${quizId}/attempts`, attemptData);
             if (!response.ok) throw new Error('Failed to submit quiz');
             // Clear quiz list cache after submission
             cache.delete('quizzes_list');
